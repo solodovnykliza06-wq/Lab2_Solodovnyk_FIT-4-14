@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Lab2_Solodovnyk.ViewModels"
+             x:Class="Lab2_Solodovnyk.Views.StudentDetailPage"
+             Title="Деталі студента">
+
+    <ContentPage.BindingContext>
+        <vm:StudentDetailViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="20" Spacing="12">
+
+        <Label Text="ПІБ:" FontAttributes="Bold" />
+        <Label Text="{Binding FullName}" FontSize="20" />
+
+        <Label Text="Група:" FontAttributes="Bold" />
+        <Label Text="{Binding Group}" FontSize="20" />
+
+        <Label Text="{Binding AverageScore, StringFormat='Середній бал: {0:F1}'}"
+               FontAttributes="Bold" />
+        <Stepper Minimum="0" Maximum="5" Increment="0.1"
+                 Value="{Binding AverageScore, Mode=TwoWay}"
+                 HorizontalOptions="Start" />
+
+        <Button Text="Зберегти" Command="{Binding SaveCommand}" />
+        <Button Text="Назад" Command="{Binding GoBackCommand}" />
+
+    </VerticalStackLayout>
+</ContentPage>
